@@ -15,15 +15,16 @@ Ponjika can store any information in the form of a playlist. And help users to o
 ![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(755).png)
 
 **Feature**
+---
 1. Create user account
 2. Login to user account
 3. Create a category
-  1. Category name
-  2. Category detail
+  - Category name
+  - Category detail
 4. Add item to category
-  1. Item name
-  2. Item icon
-  3. Item detail
+  - Item name
+  - Item icon
+  - Item detail
 5. Delete /edit category
 6. Delete/edit item
 7. Search an item

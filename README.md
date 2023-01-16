@@ -4,3 +4,15 @@ Ponjika can store any information in the form of a playlist. And help users to o
 [Project Presentation Video](https://youtu.be/c-bvn4PxIeY)
 
 ![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(749).png)
+
+![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(750).png)
+![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(751).png)
+
+![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(752).png)
+
+![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(753).png)
+![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(754).png)
+![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(755).png)
+
+
+

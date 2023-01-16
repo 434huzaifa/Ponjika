@@ -14,7 +14,7 @@ Ponjika can store any information in the form of a playlist. And help users to o
 
 # MUST DO THIS:
 The version we used of flask_uploads was not updated thats why we have to do this. 
-1. Go to this director "C:\Users\%USER%\AppData\Local\Programs\Python\Python310\Lib\site-packages\flask_uploads.py"
+1. Go to this director `C:\Users\%USER%\AppData\Local\Programs\Python\Python310\Lib\site-packages\flask_uploads.py`
 2. open flask_uploads.py
 3. find from werkzeug. import secure_filename,FileStorage
 4. replace the line with 

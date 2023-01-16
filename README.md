@@ -12,6 +12,8 @@ Ponjika can store any information in the form of a playlist. And help users to o
 
 >pip install flask-uploads
 
+>MongoDB
+
 # MUST DO THIS:
 The version we used of flask_uploads was not updated thats why we have to do this. 
 1. Go to this director `C:\Users\%USER%\AppData\Local\Programs\Python\Python310\Lib\site-packages\flask_uploads.py`
@@ -20,6 +22,10 @@ The version we used of flask_uploads was not updated thats why we have to do thi
 4. replace the line with 
                         from werkzeug.utils import secure_filename 
                         from werkzeug.datastructures import  FileStorage
+ # How to Run
+ 1. Download The Repo then run main.py
+ 2. Make sure your cmd run location same as the main.py location
+ 3. See __init__.py to change database settings
 
 ![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(749).png)
 

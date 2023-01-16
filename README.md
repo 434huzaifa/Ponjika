@@ -4,13 +4,13 @@ Ponjika can store any information in the form of a playlist. And help users to o
 [Project Presentation Video](https://youtu.be/c-bvn4PxIeY)
 
 ## Prerequisite
->pip install flask-login
+>flask-login
 
->pip install flask-mongoengine
+>flask-mongoengine
 
->pip install requests
+>requests
 
->pip install flask-uploads
+>flask-uploads
 
 >MongoDB
 

@@ -3,6 +3,8 @@ Ponjika can store any information in the form of a playlist. And help users to o
 
 [Project Presentation Video](https://youtu.be/c-bvn4PxIeY)
 
+## Prerequisite
+
 ![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(749).png)
 
 ![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(750).png)
@@ -14,17 +16,16 @@ Ponjika can store any information in the form of a playlist. And help users to o
 ![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(754).png)
 ![alt text](https://github.com/434huzaifa/Ponjika/blob/master/Screenshots/Screenshot%20(755).png)
 
-**Feature**
----
+## Feature
 1. Create user account
 2. Login to user account
 3. Create a category
-  - Category name
-  - Category detail
+   - Category name
+   - Category detail
 4. Add item to category
-  - Item name
-  - Item icon
-  - Item detail
+   - Item name
+   - Item icon
+   - Item detail
 5. Delete /edit category
 6. Delete/edit item
 7. Search an item

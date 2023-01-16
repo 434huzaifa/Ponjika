@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}
+Edit Item
+{% endblock title %}
+
+{% block css %}
+
+{{ url_for('static', filename='edit_item.css') }}
+
+{% endblock css %}
+
+{% block body %}
+
+{% include 'nav.html' %}
+
+<div class="main">
+    <form method="post" enctype="multipart/form-data">
+        <small id="item-error"></small>
+        <label2 for="chk" aria-hidden="true">Update Item {% if cate_name %}
+            of {{cate_name}}
+            {% endif %} </label2>
+        <input type="text" id="title" name="title" value="{{item.title}}" placeholder="Item Title" required
+            onblur="name_check(this.id)">
+        <textarea id="about" name="about" rows="2" cols="20" placeholder="About">{{item.about}}</textarea>
+        <input type="url" id="link" name="link" placeholder="URL" value="{{item.link}}">
+
+
+        <div class="drop-down">
+
+            <select id="item_type" name="item_type" class="form-control">
+                <option value="" selected>Select Item Type</option>
+                <option value="Audio" id="Audio">Audio</option>
+                <option value="Video" id="Video">Video</option>
+                <option value="Audio" id="Audio">Pc Application</option>
+                <option value="Extension" id="Extension">Extension</option>
+                <option value="Mobile Application" id="Mobile Application">Mobile Application</option>
+                <option value="Text" id="Text">Text</option>
+                <option value="Other" id="Other">Others</option>
+
+            </select>
+        </div>
+        <label for="">Old Image</label>
+        <img  class = "avatar1"src="{{photos.url(item.image)}}" alt="">
+        <label for="image" id="image_label">Get file</label>
+        <input type="file" name="image" id="image" accept="image/*" onchange="for_file(this.id)">
+        <button class="btn2 btn-info btn-block" type="submit">Update</button>
+    </form>
+
+
+</div>
+<script>
+    window.onload = function () {
+        name_check('title')
+        document.getElementById("item_type").value = "{{item.item_type}}";
+    };
+</script>
+{% endblock body %}

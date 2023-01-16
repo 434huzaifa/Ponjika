@@ -1,0 +1,13 @@
+.item-error{
+border: 1px solid red;
+}
+
+.item-ok{
+    border: 1px solid rgb(21, 255, 0);
+    }
+    
+::selection {
+        color: rgb(255, 255, 255);
+        background: rgb(131, 61, 211);
+        font: bold;
+}

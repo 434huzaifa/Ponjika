@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock title %}
+{% block css %}
+{{ url_for('static', filename='home.css') }}
+{% endblock css %}
+{% block body %}
+{% include 'nav.html' %}
+
+{% include 'search_box.html' %}
+<div class="container mx-auto mt-5">
+
+  <div class="row" id="row">
+    {% for lst in lists %}
+    <div class="col-md-4">
+      <div class="card" style="width: 22rem;">
+        <a href="/item_lists/{{lst.title}}/"><img src={{photos.url(lst.image)}} class="card-img-top" height="250px"></a>
+        <div class="card-body">
+          <h3 class="card-title">{{lst.title}}</h3>
+          {% if lst.about == "" %}
+          <p class="card-text">&nbsp;</p>
+            {% else %}
+            <p class="card-text">{{lst.about}}</p>
+          {% endif %}
+          
+          <a href="/item_lists/{{lst.title}}/" class="btn mr-2"><i class="fas fa-link"></i> View</a>
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
+              Add
+            </a>
+
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/add_item/{{lst.title}}/">Custom ADD</a>
+              <a class="dropdown-item" href="/add_anime/{{lst.title}}/">Add Anime</a>
+              <a class="dropdown-item" href="/add_movie/{{lst.title}}/">Add Movie</a>
+              <a class="dropdown-item" href="/add_tv_show/{{lst.title}}/">Add Tv Show</a>
+              <a class="dropdown-item" href="/add_manga/{{lst.title}}/">Add Manga</a>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+<script>
+  function search_cate() {
+    var keyword = document.getElementById('search').value;
+
+    $.ajax({
+      type: "POST",
+      dataType: 'json',
+      url: "/cate_search/",
+      data: { 'keyword': keyword },
+
+      success: function (response) {
+        console.log(response)
+        if (!response['error']) {
+          document.getElementById('search-error').style.display = 'none';
+          data = response['cate'];
+          console.log(data)
+          output = '';
+          for (let i = 0; i < data.length; i++) {
+            output += '<div class="col-md-4">';
+            output += '<div class="card" style="width: 22rem;">';
+            output += '<a href="/item_lists/'+data[i]['title']+'/"><img src="'+data[i]['image']+'" class="card-img-top" height="250px"></a>';
+            output += '<div class="card-body">';
+            output += '<h3 class="card-title">'+data[i]['title']+'</h3>';
+            if (data[i]['about']!=''){
+              output += '<p class="card-text">'+data[i]['about']+'</p>';
+            }else{
+              output += '<p class="card-text">&npsp;</p>';
+            }
+            
+            output += '<a href="/item_lists/'+data[i]['title']+'/" class="btn mr-2"><i class="fas fa-link"></i> View</a>';
+            output += '<div class="dropdown">';
+            output += '<a class="btn btn-secondary dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">';
+            output += 'Add';
+            output += '</a>';
+            output += '<div class="dropdown-menu">';
+            output += '<a class="dropdown-item" href="/add_item/'+data[i]['title']+'/">Custom ADD</a>';
+            output += '<a class="dropdown-item" href="/add_anime/'+data[i]['title']+'/">Api Add</a>';
+            output += '</div>';
+            output += '</div>';
+            output += '</div>';
+            output += '</div>';
+            output += '</div>';
+          }
+
+          row = document.getElementById('row').innerHTML = output;
+
+        } else {
+          document.getElementById('search-error').innerHTML = 'No Data Found';
+        }
+
+
+      }
+    });
+
+  }
+</script>
+{% endblock body %}

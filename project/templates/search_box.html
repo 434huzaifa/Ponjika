@@ -1,0 +1,33 @@
+<style>
+    #search::-webkit-search-cancel-button {
+	position: relative;
+	right: 120px;
+	background: #7300ff;
+	color: #7300ff;
+}
+</style>
+<div class="container">
+    <div class="row height d-flex justify-content-center align-items-center">
+
+        <div class="col-md-8">
+
+            <div class="search">
+                <i class="fa fa-search"></i>
+                <input type="search" id="search" name="keyword" class="form-control" placeholder="Keyword" oninput="name_check(this.id)" style="color: rgb(255, 255, 255);">
+                <small id="search-error" ></small>
+                {% if api %}
+                <button class="btn1 btn-primary" onclick="gosearch(1)">Search</button>
+                {% elif item_list %}
+                <button class="btn1 btn-primary" onclick="search_item()">Search</button>
+                {% elif home %}
+                <button class="btn1 btn-primary" onclick="search_cate()">Search</button>
+                {% else %}
+                <button class="btn1 btn-primary">Search</button>
+                {% endif %}
+                
+            </div>
+
+        </div>
+
+    </div>
+</div>

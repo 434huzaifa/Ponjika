@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block css %}
+{{ url_for('static', filename='add_cate.css') }}
+{% endblock css %}
+{% block title %}
+Add Category
+{% endblock title %}
+
+{% block body %}
+{% include 'nav.html' %}
+<div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true">
+    <div class="signup">
+        <small id="cate-error" ></small>
+        <form method="post" id="cate-form">
+            <label for="chk" aria-hidden="true">Add New Category</label>
+            <input type="text" id="cate_name" name="txt" placeholder="Category name" required onblur="name_check(this.id)">
+            <textarea name="txt" id="about" rows="2" cols="20" placeholder="About"></textarea>
+            
+        </form>
+        <button class="btn2 btn-info btn-block" type="submit" onclick="add_category()">Create</button>
+    </div>
+
+
+</div>
+<script>
+function add_category() {
+    
+    var cate_name=document.getElementById('cate_name');
+    var about = document.getElementById('about');
+    if (cate_name.classList[0] == 'item-ok'){
+        console.log('add+cate');
+        var cate={}
+        cate.cate_name=cate_name.value;
+        cate.about = about.value;
+        $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "/add_category/",
+                data: cate,
+                success: function (response) {
+                    console.log(response)
+                    if (!response['error']) {
+                       
+                        document.getElementById('cate-form').reset();
+                        window.location='/'
+                    }
+                    else {
+                        document.getElementById('cate-error').innerHTML = response['message']
+                    }
+                },
+            });
+    }
+}
+</script>
+{% endblock body %}

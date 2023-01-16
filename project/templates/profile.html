@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %}
+Profile
+{% endblock title %}
+{% block css %}
+{{ url_for('static', filename='profile.css') }}
+{% endblock css %}
+{% block body %}
+{% include 'nav.html' %}
+<div class="main">
+    <label for="chk" aria-hidden="true"></label>
+    <div class="signup">
+        <div class="product-image">
+            <header class="avatar">
+                <img src="{{photos.url(user.image)}}" />
+            </header>
+        </div>
+        <div class="product-details">
+            <form>
+
+                <div class="text">
+                    <li>{{user.username}}</li>
+                </div>
+                <div class="text">
+                    <li>{{user.name}}</li>
+                </div>
+                <div class="text">
+                    <li>{{user.email}}</li>
+                </div>
+                <div class="text">
+                    <li>{{user.datetime}}</li>
+                </div>
+                <button class="btn4 btn-primary" onclick="delete_user()">Delete Account</button>
+                <button class="btn4 btn-primary" onclick="logout()">Logout</button>
+            </form>
+        </div>
+
+    </div>
+
+
+
+</div>
+<script>
+    function logout(params) {
+       window.open('/logout/')
+    }
+    function delete_user() { 
+        window.open('/delete_profile/')
+     }
+</script>
+{% endblock body %}

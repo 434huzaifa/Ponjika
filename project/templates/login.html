@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock title %}
+{% block css %}
+{{ url_for('static', filename='main.css') }}
+{% endblock css %}
+{% block body %}
+
+<div class="text-content">
+    
+    <span><img src="{{url_for('static',filename='logo.png')}}" alt="" width="300" ><br><a>Welcome To Ponjika</a> <p>
+        Your Personal Keepsaker
+    </p><span>
+            
+</div>
+<div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true">
+    <div class="signup">
+        <form method="post" role="form" id="signup-form">
+            <small id="signup_error"></small>
+            <label for="chk" aria-hidden="true">Sign up</label>
+            <input type="text" id="username" placeholder="User name" required onblur="name_check(this.id);reset_error()">
+            <input type="text" id="name" placeholder="Name" required onblur="name_check(this.id);reset_error()">
+            <input type="email" id="email" placeholder="Email" required onblur="email_check(this.id);reset_error()">
+            <input type="password" id="password1" placeholder="Password" required onblur="password_check(this.id);reset_error()">
+            <input type="password" id="password2" placeholder="Confirm Password" required
+                oninput="password_check(this.id);reset_error()">
+        </form>
+        <button type="submit" onclick="singup_post()">Sign up</button>
+    </div>
+    <div class="login">
+        
+        <form method="post" role="form" id="loginform">
+            <small id="login_error"></small>
+            <label for="chk" aria-hidden="true" id="loginLabel">Login</label>
+            <input type="email" placeholder="Email" id="user_email" onblur="email_check(this.id);reset_error()" required>
+            <input type="password" placeholder="Password" id="user_password" onblur="password_check(this.id);reset_error()" required>
+            <label1 for="remember">Remember Me</label1>
+            <input type="checkbox" id="remember">
+           
+        </form>
+        <button type="submit" onclick="login_post()">Login</button>
+    </div>
+
+</div>
+{% block script %}
+<script>
+    function login_post() {
+        var user = {};
+        user.email = document.getElementById('user_email').value;
+        user.password = document.getElementById('user_password').value;
+        user.remember = document.getElementById('remember').checked;
+        if (document.getElementById('user_email').classList[0] == 'item-ok') {
+            if (document.getElementById('user_password').classList[0] == 'item-ok') {
+                $.ajax({
+                    type: "POST",
+                    dataType: 'json',
+                    url: "/login/",
+                    data: user,
+
+                    success: function (response) {
+                        console.log(response);
+                        if (!response['error']) {
+                            window.location = '/';
+                        } else {
+                            document.getElementById('login_error').innerHTML = response['message']
+                        }
+
+
+                    }
+                });
+            }
+
+        }
+
+    }
+    function singup_post() {
+        var user = {};
+        user.username = document.getElementById('username');
+        user.name = document.getElementById('name');
+        user.email = document.getElementById('email');
+        user.password1 = document.getElementById('password1');
+        user.password2 = document.getElementById('password2');
+        var l = Object.keys(user).length
+        let c = 0
+        for (const [key, value] of Object.entries(user)) {
+            if (value.classList[0] == 'item-ok') {
+                c = c + 1;
+            }
+        }
+
+        if (c == l) {
+            var user = {};
+            user.username = document.getElementById('username').value;
+            user.name = document.getElementById('name').value;
+            user.email = document.getElementById('email').value;
+            user.password1 = document.getElementById('password1').value;
+            user.password2 = document.getElementById('password2').value;
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "/signup/",
+                data: user,
+                success: function (response) {
+                    console.log(response)
+                    if (!response['error']) {
+                       
+                        document.getElementById('signup-form').reset();
+
+                        
+                        document.getElementById('loginLabel').click();
+                    }
+                    else {
+                        document.getElementById('signup_error').innerHTML = response['message']
+                    }
+                },
+            });
+        }
+
+    }
+</script>
+{% endblock script %}
+{% endblock body %}

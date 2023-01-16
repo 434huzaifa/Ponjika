@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-custom navbar-mainbg">
+
+    <a class="navbar-brand navbar-logo" href="/"><img src="{{url_for('static',filename='logo_2.png')}}" height="100" width="100"></a>
+    <a href="/profile/"><img class="user" src="{{photos.url(user.image)}}" alt="" width="55" height="50">
+    <span>Hello,{{user.name}}</span></a>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/add_category/">Add Catagories </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/all_items/">All Items</a>
+        </li>
+        <li class="nav-item">
+            <button class="btn1 btn-primary" type="button"><a href="/logout/">Log Out</a></button>
+        </li>
+    </ul>
+    </div>
+</nav>

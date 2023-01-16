@@ -1,0 +1,590 @@
+@import url('https //fonts.googleapis.com/css family=nunito');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins',sans-serif;
+	transition: all 0.3s ease;
+  }
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #ffffff;
+	
+
+}
+
+::selection {
+	color: rgb(255, 255, 255);
+	background: rgb(131, 61, 211);
+	font: bold;
+}
+
+body::before,
+body::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+body::before{
+  clip-path: circle(20% at left 20%);
+  opacity: 0.4;
+  background-image: linear-gradient( 135deg, #a600ff46 10%, #50ff82 100%);
+  z-index: -2;
+}
+body::after{
+  opacity: 0.4;
+  clip-path: circle(30% at right );
+  background-image: linear-gradient( 135deg, #9003fc 10%, #54ff98 100%);
+  z-index:-2;
+  height: 100%;
+}
+
+
+span{
+	color:white;
+	margin-left: 2px;
+	
+}
+.navbar-logo {
+	padding: 15px;
+	color: #fff;
+	font-size: 30px;
+	font-weight: 1000;
+	
+}
+
+.navbar-mainbg {
+	background-image: linear-gradient(135deg, #b06afc 39%, rgba(116, 17, 255, 1) 101%);
+	padding: 0px;
+	height: 62px;
+	margin-top: 1px;
+}
+
+.nav-item
+{
+    display:inline-block;
+    margin-left: 25px;
+
+
+}
+.nav-item a
+{
+	color:#fff;
+}
+.nav-item a:hover
+{
+	cursor: pointer;
+	color: #4b57c4;
+}
+/* searchbar btn and nav btn*/
+.btn1{
+	color:#ffffff;
+	background-color: rgba(165, 42, 130, 0.108);
+	padding: 5px;
+	border-radius: 10px;
+	border-color: #ffffff;
+    cursor: pointer;
+	margin-right: 10px;
+
+}
+.btn1:hover
+{
+	background-color: #7100c885;
+	border: #ffffff;
+}
+/*search bar*/ 
+.search {
+	position: relative;
+	box-shadow: 0 0 40px rgba(255, 255, 255, 0.171);
+	margin-top: 30px;
+	
+
+}
+.search input {
+    margin-top: 15px;
+	height: 60px;
+	text-indent: 25px;
+	border: 2px solid #d6d4d4;
+	background-color: #212042;
+    border-style: solid;
+	border-width: 3px;
+	border-image: linear-gradient(45deg, #f06ed1, #b759ff) 1;
+
+
+	
+}
+
+.search input:focus {
+	box-shadow: none;
+	border: 2px solid rgb(135, 75, 238);
+	box-shadow: 0 0 40px rgba(52, 26, 76, 0.345);
+	background-color: #1c1133;
+}
+.search button {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	height: 50px;
+	width: 110px;
+	color: #ffffff;
+	background: linear-gradient(135deg, rgba(176, 106, 252, 1) 39%, rgba(116, 17, 255, 1) 101%);
+	border-radius: 8px;
+	border-color: #c800c5;
+	border-width: 1px;
+	margin-right: -120px;
+}
+/*item btn*/
+
+	.btn {
+        border: 2px solid;
+        border-image-slice: 1;
+        background-image: linear-gradient(135deg, rgba(176, 106, 252, 1) 39%, rgba(116, 17, 255, 1) 101%);
+        -webkit-background-clip: text ;
+        -webkit-text-fill-color: transparent ;
+        border-image-source:  linear-gradient(135deg, rgba(176, 106, 252, 1) 39%, rgba(116, 17, 255, 1) 101%) ; 
+        text-decoration: none;
+        transition: all .4s ease;
+        margin-left: 20px;
+        border-radius:5px ;
+        position: relative;
+        width: 80%;
+        
+        
+    }
+	
+	
+
+
+.btn:hover, .btn:focus {
+	background: linear-gradient(135deg, rgba(176, 106, 252, 1) 39%, rgba(116, 17, 255, 1) 101%) !important;
+	-webkit-background-clip: none !important;
+	-webkit-text-fill-color: rgb(255, 255, 255) !important;
+	border: 2px solid #fff !important; 
+	box-shadow: rgb(42, 24, 58) 1px 0 10px;
+	
+}
+
+#container{
+	background: #212042;
+	border-radius: 5px;
+	overflow: hidden;
+	margin-bottom: 10px;
+	height: 250px;
+	width: 500px; 	
+	margin-top: 10px;
+	margin-left: 100px;
+    border-top: 5px solid rgb(176, 106, 252);
+
+
+}
+
+.product-details {
+	position: relative;
+	text-align: left;
+	overflow-x:hidden;
+    overflow-y: auto;
+	padding: 30px;
+	height: 100%;
+	float: right;
+	width: 55%;
+
+}
+
+#container .product-details h1{
+	display: inline-block;
+	position: relative;
+	font-size: 28px;
+	color: #ffffff;
+	margin: 0;	
+
+}
+
+p.information
+{
+    width: 100%;
+    color: rgb(207, 97, 255);
+    font-weight: 10pc;
+}
+.product-image {
+	transition: all 0.3s ease-out;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	float: right;
+	width: 45%;
+	display: inline-block;
+	object-fit: contain;
+}
+
+
+
+#container img {width: 100%;height: 100%;}
+.product-details ul,li{
+    color:#fff;
+    font-weight: 100;
+    
+}
+li::marker
+{
+    color: #b759ff;
+}
+/*side bar btn*/
+.btn3
+{
+	width: 80%;
+	height: 40px;
+	justify-content: left;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-left: 10px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+.btn3:hover{
+	background: #6d44b8;
+}
+@media(min-width: 400px) {
+	.navbar-expand-custom {
+		-ms-flex-flow: row nowrap;
+		flex-flow: row nowrap;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+	}
+
+	.navbar-expand-custom .navbar-nav {
+		-ms-flex-direction: row;
+		flex-direction: row;
+	}
+
+	.navbar-expand-custom .navbar-collapse {
+		display: -ms-flexbox !important;
+		display: flex !important;
+		-ms-flex-preferred-size: auto;
+		flex-basis: auto;
+	}
+	.search button{
+		margin-right: -1px;
+	}
+	
+}
+
+
+@media (max-width: 300px) {
+	
+	.navbar-logo
+	{
+		font-size: 26px;
+	}
+	.nav-item  a{
+		font-size: 15px;
+		cursor: pointer;
+
+		margin-left: -20px;
+		margin-right: 20px;
+		margin-top: 10px;
+	}
+	.nav-item a:hover{
+	cursor: pointer;
+	color: #4b57c4;
+    }
+.btn1{
+	color:#ffffff;
+	background-color: rgba(165, 42, 130, 0.108);
+	padding-left: 5px;
+	border-radius: 10px;
+	border-color: #ffffff;
+    cursor: pointer;
+	width: 90px;
+	margin-right: 200px;
+	margin-top: 12px;
+	
+}
+
+
+}
+/*custom scrollbar*/
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(167, 106, 252); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(224, 205, 226); 
+	border-radius: 20px;
+  }
+  /*side bar all */
+  .sidebar li
+  {
+	  color: rgb(0, 0, 0);
+	  font-weight: 500;
+	  margin-left: 5px;
+	  
+  }
+  .avatar{
+	background:rgba(0, 0, 0, 0);
+	padding:2em 0.5em;
+	text-align:center;}
+	
+	.avatar img{
+		width:150px;
+		border-radius:50%;
+		overflow:hidden;
+		border:4px solid rebeccapurple;
+		box-shadow:0 0 0 4px rgba(255,255,255,0.2);
+	}
+	.avatar h2{
+		margin-top: 30px;
+		text-align: left;
+	}
+  .sidebar {
+	margin-top: 40px;
+	margin-left: 10px;
+	padding: 0;
+	width: 230px;
+	background-image: linear-gradient( 135deg, #be68ff 10%, #77c195 100%);
+	position: fixed;
+	height: 80%;
+	overflow: auto;
+	z-index: 1;
+	border: #573b8a solid;
+	border-radius: 5px;
+  }
+  .sidebar a {
+	display: block;
+	color: black;
+	padding: 16px;
+	text-decoration: none;
+  }
+  
+
+  .sidebar a.active {
+	background-color: #04AA6D;
+	color: white;
+  }
+  
+
+  .sidebar a:hover:not(.active) {
+	background-color: #555;
+	color: white;
+  }
+  
+  
+  div.content {
+	margin-left: 200px;
+	padding: 1px 16px;
+	height: 1000px;
+  }
+  li{
+	margin-left: 5px;
+  }
+
+  @media screen and (max-width: 700px) {
+	.sidebar {
+	  width: 100%;
+	  height: auto;
+	  position: relative;
+	}
+	.sidebar a {float: left;}
+	div.content {margin-left: 0;}
+  }
+
+  @media screen and (max-width: 400px) {
+	.sidebar a {
+	  text-align: center;
+	  float: none;
+	}
+  }
+  
+/*pagination*/
+#pages.pagination
+{
+	overflow: auto;
+}
+
+#search-error
+{
+	color:#9003fc;
+	font-size: 30px;
+	font-weight: 400;
+}
+/*add btn drp dwn*/
+.dropdown, .dropleft, .dropright, .dropup {
+  
+	color:white;
+	text-align: center;
+ 
+ }
+ .btn3.btn-secondary.dropdown-toggle
+ {
+	 color:white;
+	 background-color: #573b8a;
+ }
+ .btn3.btn-secondary.dropdown-toggle:hover
+ {
+ 
+	 background-color: #7c42e7;
+ }
+ .dropdown-menu.show
+ {
+	 margin-left: 10px;
+ }
+ .dropdown .nav-item:hover{
+	 background-color: #6d44b8;
+ }
+ /*no item msge*/
+ h1{
+	text-align: center;
+	margin-left: 40%;
+	color:#6d44b8;
+	font-weight: 400;
+	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ }
+
+ /*img slide  */
+.info {
+    background: rgba(27, 26, 26, 0.9);
+    font-family: 'Bree Serif', serif;
+    transition: all 0.3s ease-out;
+    transform: translateX(-100%);
+    position: absolute;
+    line-height: 1.8;
+    text-align: left;
+    font-size: 105%;
+    cursor: no-drop;
+    color: #FFF;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.info h2 {text-align: center}
+.product-image:hover .info{transform: translateX(0);}
+
+.info ul li{transition: 0.3s ease;}
+.info ul li:hover{transform: translateX(50px) scale(1.3);}
+
+.product-image:hover img {transition: all 0.3s ease-out;}
+.product-image:hover img {transform: scale(1.2, 1.2);}
+
+
+
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+  background-color: #ccc;
+  color: black;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+  background-color: #f44336;
+}
+
+/* Add padding and center-align text to the container */
+.container1 {
+  padding: 16px;
+  text-align: center;
+
+
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #ffffffba;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  width: 10%;
+  margin: 12% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+
+
+/* The Modal Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #ff0000;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and delete button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .deletebtn {
+    width: 100%;
+  }
+}
+
+ h2{
+	color:#573b8a;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.cancelbtn{
+	color:#000000;
+	border:1px solid #6d44b8;
+	background-color: #6d44b8;
+	cursor: pointer;
+	padding:2%;
+}
+.deletebtn
+{
+	border:1px solid rgb(220, 59, 59);
+	cursor: pointer;
+	padding:2%;
+	
+}
+.delete-btn{
+	width: 60px;
+	height: 50px;
+}

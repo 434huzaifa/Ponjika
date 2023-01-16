@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+Add Item
+{% endblock title %}
+
+{% block css %}
+
+{{ url_for('static', filename='new_item.css') }}
+
+{% endblock css %}
+
+{% block body %}
+
+{% include 'nav.html' %}
+
+<div class="main">
+    <form method="post" enctype="multipart/form-data">
+        <small id="item-error" ></small>
+        <label2 for="chk" aria-hidden="true">Add New Item  {% if cate_name %}
+            To {{cate_name}}
+        {% endif %} </label2>
+        <input type="text" id="title" name="title" placeholder="Item Title" required onblur="name_check(this.id)">
+        <textarea id="about" name="about" rows="2" cols="20" placeholder="About"></textarea>
+        <input type="url" id="link" name="link" placeholder="URL" >
+
+
+        <div class="drop-down">
+
+            <select id="item_type" name="item_type" class="form-control">
+                <option value="" selected>Select Item Type</option>
+                <option value="Audio">Audio</option>
+                <option value="Video">Video</option>
+                <option value="Audio">Pc Application</option>
+                <option value="Extension">Extension</option>
+                <option value="Mobile Application">Mobile Application</option>
+                <option value="Text">Text</option>
+                <option value="Other...">Others...</option>
+
+            </select>
+        </div>
+        <label for="image" id="image_label">Get file</label>
+        <input type="file" name="image" id="image" accept="image/*" onchange="for_file(this.id)">
+        <button class="btn2 btn-info btn-block" type="submit">Create</button>
+    </form>
+    
+
+</div>
+<script>
+     
+</script>
+{% endblock body %}
+
+

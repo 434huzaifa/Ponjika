@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Item Lists
+{% endblock title %}
+
+{% block css %}
+{{ url_for('static', filename='item.css') }}
+{% endblock css %}
+
+{% block body %}
+{% include 'nav.html' %}
+{% include 'search_box.html' %}
+<div class="container mx-auto mt-3">
+    <div class="row" id="row">
+        {% for idx in range(items|length) %}
+
+
+        <div id="{{items[idx].id}}" class="col-md-6">
+            <div id="container">
+                <div class="product-details">
+                    <h1>{{items[idx].title}}</h1>
+                    <p class="information">{{items[idx].about}}
+                    </p>
+                    <ul>
+                        <li>URL : <a href="{{items[idx].link}}">{{items[idx].link}}</a></li>
+                        <li> Item Types : {{items[idx].item_type}}</li>
+                        <li> Item List : {{cate[idx]}}</li>
+                    </ul>
+                </div>
+                <div class="product-image">
+                    <img src="{{photos.url(items[idx].image)}}" alt="{{items[idx].image}}">
+                    <div class="info">
+                        <div class="control">
+                            <a href="/edit_item/{{items[idx].id}}/{{cate[idx]}}" class="btn btn-primary"><img src="{{url_for('static',filename='edit.png')}}"
+                                    style="height: 40px;width: 40px;"></a>
+                                    <span  id="{{items[idx].id}}" hidden>/delete_item/{{items[idx].id}}/{{cate[idx]}}/</span>
+                            <a href="#" id="{{items[idx].id}}" onclick="modal_on(this.id)" class="btn btn-primary"><img
+                                    src="{{url_for('static',filename='delete.png')}}"
+                                    style="height: 40px;width: 40px;"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <h1>No Item</h1>
+        {% endfor %}
+
+
+    </div>
+</div>
+<script>
+    function search_item() {
+        var keyword = document.getElementById('keyword');
+        if (keyword.classList[1] == 'item-ok') {
+            console.log(keyword.value)
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "/item_lists/",
+                data: { 'keyword': keyword.value },
+
+                success: function (response) {
+                    console.log(response)
+                    if (!response['error']) {
+                        document.getElementById('search-error').style.display = 'none';
+                        data = response['items'];
+                        output = '';
+                        for (let i = 0; i < data.length; i++) {
+                            console.log(data[i]['title']);
+                            output +='<div class="col-md-6" id="'+data[i]['_id']['$oid']+'">';
+                            output +='<div id="container">';
+                            output +='<div class="product-details">';
+                            output +='<h1>'+data[i]['title']+'</h1>';
+                            output +='<p class="information">'+data[i]['about'];
+                            output +='</p>';
+                            output +='<ul>';
+                            output +='<li>URL : <a href="'+data[i]['link']+'">'+data[i]['link']+'</a></li>';
+                            output +='<li> Item Types : '+data[i]['type']+'</li>';
+                            output +='</ul>';
+                            output +='</div>';
+                            output +='<div class="product-image">';
+                            output +='<img src="'+data[i]['image']+'" alt="'+data[i]['image']+'">';
+                            output +='<div class="info">';
+                            output +='<div class="control">';
+                            output +='<a href="#" class="btn btn-primary"><img src="/static/edit.png" style="height: 40px;width: 40px;"></a>';
+                            output +='<a href="/delete_item/'+data[i]['_id']['$oid']+'/{{cate_name}}/" id="'+data[i]['_id']['$oid']+'" class="btn btn-primary"><img src="/static/delete.png" style="height: 40px;width: 40px;"></a>';
+                            output +='</div>';
+                            output +='</div>';
+                            output +='</div>';
+                            output +='</div>';
+                            output +='</div>';
+                        }
+                        row = document.getElementById('row').innerHTML = output;
+
+                    } else {
+                        document.getElementById('search-error').innerHTML = 'No Data Found';
+                    }
+
+
+                }
+            });
+        }
+    }
+    
+</script>
+{% endblock body %}

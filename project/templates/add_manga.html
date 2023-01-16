@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add Manga
+{% endblock title %}
+
+{% block css %}
+{{ url_for('static', filename='add.css') }}
+{% endblock %}
+
+{% block body %}
+{% include 'nav.html' %}
+
+{% include 'search_box.html' %}
+<div class="container mx-auto mt-3">
+    <div class="row" id="row">
+
+    </div>
+</div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center" id="pages">
+    </ul>
+  </nav>
+
+<script>
+    function gosearch(page) {
+    console.log(page)
+    var keyword = document.getElementById('search');
+    if (keyword.value!='') {
+        console.log(keyword.value)
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            url: "/add_manga/{{cate_name}}/",
+            data: { 'keyword': keyword.value, 'page': page },
+
+            success: function (response) {
+                console.log(response)
+                if (!response['error']) {
+                    document.getElementById('search-error').style.display = 'none';
+                    data=response['data']['data']
+                    output=''
+                    for (let i = 0; i < data.length; i++) {
+                        output += '<div class="col-md-6" id="' + data[i]['mal_id'] + '"><div id="container"><div class="product-details">';
+                        output += '<h1 id="' + data[i]['mal_id'] + '">' + data[i]['title'] + '</h1>';
+                        output += '<p class="information" id="' + data[i]['mal_id'] + '">' + data[i]['synopsis'] + '</p>';
+                        output += '<ul>';
+                        for (let j = 0; j < data[i]['title_synonyms'].length; j++) {
+                            output += '<li>' + data[i]['title_synonyms'][j] + '</li>';
+                        }
+                        output += '</ul>'
+                        output += '<a href="' + data[i]['url'] + '" id="' + data[i]['mal_id'] + '">Link</a>'
+                        output += '<div class="control"><Button id="' + data[i]['mal_id'] + '" class="btn btn-primary" onclick="anime_add(this.id)" >Add</Button></div>';
+                        output += '</div>  <div class="product-image">';
+                        output += '<img id="' + data[i]['mal_id'] + '" src="' + data[i]['images']['jpg']['image_url'] + '"> </div></div></div>';
+                        
+                    }
+                    document.getElementById('row').innerHTML=output
+                    pagination = ''
+                    tp=response['data']['pagination']['items']['total']
+                    tp=Math.ceil(tp/25)
+
+                    for (let i = 1; i <= tp; i++) {
+                        if (i == page) {
+                            pagination += '<li class="page-item active disable"><a class="page-link" id="' + i + '">' + i + '</a></li>'
+                        } else {
+                            pagination += '<li class="page-item"><a class="page-link" id="' + i + '" onclick="gosearch(this.id)" >' + i + '</a></li>'
+                        }
+                    }
+                    pages = document.getElementById('pages').innerHTML = pagination
+
+                } else {
+                    document.getElementById('search-error').innerHTML = 'No Data Found';
+                }
+
+
+            }
+        });
+    }
+
+}
+function anime_add(id) {
+    anime = {};
+    anime.cate = "{{cate_name}}";
+    console.log(id)
+    $('[id=' + id + ']').each(function () {
+
+        tagg = $(this).get(0).tagName
+
+        if (tagg == 'H1') {
+            anime.title = $(this).html();
+
+        }
+        else if (tagg == 'P') {
+            anime.about = $(this).html();
+
+        } else if (tagg == 'A') {
+            anime.link = $(this).attr('href');
+
+        } else if (tagg == 'IMG') {
+            anime.image = $(this).attr('src')
+
+        }
+
+    })
+    $.ajax({
+        type: "POST",
+        dataType: 'json',
+        url: "/store_anime/",
+        data: anime,
+
+        success: function (response) {
+            console.log(response);
+            $('[id=' + id + ']').fadeOut()
+        }
+    });
+}
+</script>
+
+
+{% endblock body %}
